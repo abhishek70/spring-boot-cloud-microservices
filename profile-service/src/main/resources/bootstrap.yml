@@ -1,0 +1,13 @@
+server:
+  port: 9192
+
+spring:
+  application:
+    name: profile-service
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}

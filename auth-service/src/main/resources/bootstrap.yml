@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: auth-service
+#  datasource:
+#    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:auth-service-db}?createDatabaseIfNotExist=true
+#    username: ${DB_USER:devuser}
+#    password: ${DB_PASS:devuser}
+#    driver-class-name: com.mysql.jdbc.Driver
+#    initialization-mode: always
+#  jpa:
+#    hibernate:
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#      use-new-id-generator-mappings: false
+#    properties:
+#      hibernate:
+#        show_sql: true
+#        format_sql: true
+
+server:
+  port: 9191
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+

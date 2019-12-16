@@ -1,0 +1,97 @@
+version: '3'
+services:
+  eureka-service:
+    build: eureka-service
+    container_name: eureka-service-container
+    networks:
+      - spring-cloud-microservices
+    ports:
+      - 8761:8761
+  gateway-service:
+    build: gateway-service
+    container_name: gateway-service-container
+    networks:
+      - spring-cloud-microservices
+    environment:
+      - EUREKA_SERVER=http://eureka-service:8761/eureka/
+    ports:
+      - 8080:8080
+    restart: on-failure
+    depends_on:
+      - eureka-service
+  auth-db:
+    image: mysql/mysql-server:5.6
+    container_name: auth-db-container
+    networks:
+      - spring-cloud-microservices
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: auth-service-db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devuser
+    expose:
+      - 3312
+    ports:
+      - 3312:3306
+    volumes:
+      - ./auth-db-data/user.sql:/docker-entrypoint-initdb.d/user.sql
+      - ./auth-db-data:/var/lib/mysql
+  auth-service:
+    build: auth-service
+    container_name: auth-service-container
+    networks:
+      - spring-cloud-microservices
+    environment:
+      - EUREKA_SERVER=http://eureka-service:8761/eureka/
+      - DB_HOST=auth-db
+      - DB_PORT=3306
+      - DB_USER=devuser
+      - DB_PASS=devuser
+      - DB_NAME=auth-service-db
+    ports:
+      - 9191:9191
+    restart: on-failure
+    depends_on:
+      - eureka-service
+      - auth-db
+  profile-db:
+    image: mysql/mysql-server:5.6
+    container_name: profile-db-container
+    networks:
+      - spring-cloud-microservices
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: profile-service-db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devuser
+    expose:
+      - 3313
+    ports:
+      - 3313:3306
+    volumes:
+      - ./profile-db-data/user.sql:/docker-entrypoint-initdb.d/user.sql
+      - ./profile-db-data:/var/lib/mysql
+  profile-service:
+    build: profile-service
+    container_name: profile-service-container
+    networks:
+      - spring-cloud-microservices
+    environment:
+      - EUREKA_SERVER=http://eureka-service:8761/eureka/
+      - DB_HOST=profile-db
+      - DB_PORT=3306
+      - DB_USER=devuser
+      - DB_PASS=devuser
+      - DB_NAME=profile-service-db
+      - AUTH_SERVER=http://auth-service:9191
+    ports:
+      - 9192:9192
+    restart: on-failure
+    depends_on:
+      - eureka-service
+      - profile-db
+networks:
+  spring-cloud-microservices:
+    external: true
