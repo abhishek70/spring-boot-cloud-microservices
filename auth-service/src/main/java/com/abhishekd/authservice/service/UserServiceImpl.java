@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * UserServiceImpl class
+ */
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
@@ -17,8 +20,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDetailRepository userDetailRepository;
 
+    // Password Encoder
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+    /**
+     * Method implementation for creating user
+     * @param authUserDetail
+     */
     @Override
     public void create(User authUserDetail) {
 
@@ -30,6 +38,7 @@ public class UserServiceImpl implements UserService {
         String passwordHash = encoder.encode(authUserDetail.getPassword());
         authUserDetail.setPassword(passwordHash);
 
+        // Saving user in db
         userDetailRepository.save(authUserDetail);
 
         log.info("Created new user: {}", authUserDetail.getUsername());

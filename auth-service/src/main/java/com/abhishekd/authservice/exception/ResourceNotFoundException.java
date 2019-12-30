@@ -1,5 +1,8 @@
 package com.abhishekd.authservice.exception;
 
+/**
+ * ResourceNotFoundException class
+ */
 public class ResourceNotFoundException extends RuntimeException {
 
     public ResourceNotFoundException() {

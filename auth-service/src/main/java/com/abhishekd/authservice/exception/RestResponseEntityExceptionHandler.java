@@ -78,7 +78,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     /**
-     *
+     * Method for handling constraint violation exception
      * @param ex
      * @param request
      * @return

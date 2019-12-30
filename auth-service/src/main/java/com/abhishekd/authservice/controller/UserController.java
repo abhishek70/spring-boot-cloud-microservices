@@ -1,6 +1,5 @@
 package com.abhishekd.authservice.controller;
 
-import com.abhishekd.authservice.model.AuthUserDetail;
 import com.abhishekd.authservice.model.User;
 import com.abhishekd.authservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,7 @@ public class UserController {
     }
 
     @PostMapping
-    public void create(@Valid @RequestBody User user)
-    {
+    public void create(@Valid @RequestBody User user) {
         userService.create(user);
     }
 }
