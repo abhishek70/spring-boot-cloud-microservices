@@ -1,21 +1,21 @@
 # Eureka Service
 
-#### Client services register with Eureka service
+Client services register with Eureka service
 
-##### Build and package spring boot app into a single executable jar file with maven
+Build and package spring boot app into a single executable jar file with maven
 ```
 mvn clean install
 ```
 
-##### Run spring boot app using maven
+Run spring boot app using maven
 ```
 mvn spring-boot:run
 ```
 
-##### UI
+UI
 ```
 http://localhost:8761/
 ```
 
-##### Documentation
+Documentation
 - [Service Registration and Discovery](https://spring.io/guides/gs/service-registration-and-discovery/)
