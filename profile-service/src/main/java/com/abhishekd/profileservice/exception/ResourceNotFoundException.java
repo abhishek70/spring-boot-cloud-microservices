@@ -1,5 +1,8 @@
 package com.abhishekd.profileservice.exception;
 
+/**
+ * ResourceNotFoundException class
+ */
 public class ResourceNotFoundException extends RuntimeException {
 
     public ResourceNotFoundException() {

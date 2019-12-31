@@ -1,6 +1,6 @@
 <h2>Spring Boot Cloud Microservices</h2>
 
-Run the following command from the root directory to .jar for all your services.
+Run the following command from the root directory to generate .jar for all your services.
 ```
 mvn clean install
 ```

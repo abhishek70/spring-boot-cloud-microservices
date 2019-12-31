@@ -19,6 +19,9 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 
 import java.util.*;
 
+/**
+ * CustomUserInfoTokenServices class
+ */
 public class CustomUserInfoTokenServices implements ResourceServerTokenServices {
 
     private final Log logger = LogFactory.getLog(getClass());

@@ -1,5 +1,8 @@
 package com.abhishekd.profileservice.exception;
 
+/**
+ * BadRequestException class
+ */
 public class BadRequestException extends RuntimeException {
 
     public BadRequestException() {
