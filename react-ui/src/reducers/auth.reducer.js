@@ -1,14 +1,21 @@
 import { SIGNIN_REQUEST, SIGNIN_ERROR, SIGNIN_SUCCESS } from '../constants';
 
-let user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? { loggedIn: true, user } : { isAuthenticating: false, loggedIn: false};
+// Initial State
+const initialState = { isAuthenticating: false, loggedIn: false};
 
+/**
+ * Auth Reducer
+ * @param state
+ * @param action
+ * @returns {{message: *, isAuthenticating: boolean, status: *}|{loggedIn: boolean, isAuthenticating: boolean}}
+ */
 const authReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
         case SIGNIN_REQUEST:
             return {
+                loggedIn: false,
                 isAuthenticating: true
             };
         case SIGNIN_ERROR:

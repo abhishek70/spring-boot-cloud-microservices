@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Footer Component
+ * @returns {*}
+ * @constructor
+ */
 const Footer = () => {
 
     return (
@@ -13,6 +18,6 @@ const Footer = () => {
             </footer>
         </div>
     );
-}
+};
 
 export default Footer;

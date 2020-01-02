@@ -1,6 +1,11 @@
 import React from 'react';
-import useForm from 'react-hook-form'
+import useForm from 'react-hook-form';
 
+/**
+ * SignUp Component
+ * @returns {*}
+ * @constructor
+ */
 const SignUp = () => {
 
     const { register, handleSubmit, errors } = useForm();

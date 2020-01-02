@@ -5,7 +5,7 @@ import { API_BASE_URL,
         ERROR
 } from '../constants';
 
-export const SignInService = (data) => {
+export const signInService = (data) => {
 
     let params = {
         'grant_type': 'password',

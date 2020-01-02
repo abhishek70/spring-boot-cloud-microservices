@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * About Component
+ * @returns {*}
+ * @constructor
+ */
 const About = () => {
 
     return(

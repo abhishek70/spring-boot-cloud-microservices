@@ -1,40 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useForm from 'react-hook-form';
 import { Button, Spinner } from 'react-bootstrap';
-import { SignInService } from '../apis/SignInService';
-import { useSelector, useDispatch } from "react-redux";
-import { userActions } from "../actions/user.action";
+import { useSelector, useDispatch } from 'react-redux';
+import { userActions } from '../actions/user.action';
 
+/**
+ * SignIn Component
+ * @returns {*}
+ * @constructor
+ */
 const SignIn = () => {
 
     const dispatch = useDispatch();
-
     const { register, handleSubmit, errors, setError } = useForm();
-
-    const userPayload = useSelector((state) => state.user);
+    const userPayload = useSelector((state) => state.auth);
 
     const onSubmit = (data, e) => {
 
-        /*
-        setLoading(true);
-
-        SignInService(data)
-            .then(response => {
-                setLoading(false);
-                if(response.status === 'error') {
-                    // set an error with type and message
-                    setError("signin", "failed", response.message);
-                }
-            });
-         */
+        // Dispatch action
         dispatch(userActions.signIn(data));
 
         e.target.reset();
-
     };
-
-    console.log("User Payload:", userPayload);
-    console.log("User Payload:", userPayload.message);
 
     if(userPayload.status === "error") {
         setError("signin", "failed", userPayload.message);

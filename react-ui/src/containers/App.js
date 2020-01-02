@@ -1,21 +1,18 @@
-import React from "react";
-import { Provider } from "react-redux";
-import config from "../store/config";
+import React from 'react';
 import {
-    BrowserRouter as Router,
+    Router,
     Switch,
-    Route
-} from "react-router-dom";
-
-import NavBar from "../components/NavBar";
-import About  from "../components/About";
-import Footer from "../components/Footer";
-import SignIn from "../components/SignIn";
-import SignUp from "../components/SignUp";
-
-
-// Redux store
-const store = config();
+    Route,
+    Redirect
+} from 'react-router-dom';
+import NavBar from '../components/NavBar';
+import About  from '../components/About';
+import Footer from '../components/Footer';
+import SignIn from '../components/SignIn';
+import SignUp from '../components/SignUp';
+import Dashboard from '../components/Dashboard';
+import PrivateRoute from '../components/PrivateRoute';
+import { history } from '../helpers/history';
 
 /**
  * App Container
@@ -23,18 +20,19 @@ const store = config();
  * @constructor
  */
 const App = () => {
+
     return(
-        <Provider store={store}>
-            <Router>
-                <NavBar/>
-                <Switch>
-                    <Route path="/" exact component={About}/>
-                    <Route path="/signin" component={SignIn}/>
-                    <Route path="/signup" component={SignUp}/>
-                </Switch>
-                <Footer/>
-            </Router>
-        </Provider>
+        <Router history = {history}>
+            <NavBar/>
+            <Switch>
+                <Route path="/" exact component={About}/>
+                <Route path="/signin" component={SignIn}/>
+                <Route path="/signup" component={SignUp}/>
+                <PrivateRoute path="/dashboard" component={Dashboard}/>
+                <Redirect from="*" to="/" />
+            </Switch>
+            <Footer/>
+        </Router>
     )
 };
 
