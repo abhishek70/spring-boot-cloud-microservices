@@ -14,6 +14,7 @@ const NavBar = () => {
             <nav className="my-2 my-md-0 mr-md-3">
                 <Link to="/" className="p-2 text-dark">About</Link>
             </nav>
+
             <NavLink exact activeClassName="active" to="/signin" className="btn btn-outline-primary m-2">Sign In</NavLink>
             <NavLink exact activeClassName="active" to="/signup" className="btn btn-outline-primary m-2">Sign Up</NavLink>
         </div>

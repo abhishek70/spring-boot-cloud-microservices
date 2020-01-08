@@ -5,12 +5,11 @@ import {
     Route,
     Redirect
 } from 'react-router-dom';
-import NavBar from '../components/NavBar';
-import About  from '../components/About';
+import About  from './About';
 import Footer from '../components/Footer';
-import SignIn from '../components/SignIn';
-import SignUp from '../components/SignUp';
-import Dashboard from '../components/Dashboard';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import Dashboard from './Dashboard';
 import PrivateRoute from '../components/PrivateRoute';
 import { history } from '../helpers/history';
 
@@ -23,7 +22,6 @@ const App = () => {
 
     return(
         <Router history = {history}>
-            <NavBar/>
             <Switch>
                 <Route path="/" exact component={About}/>
                 <Route path="/signin" component={SignIn}/>
