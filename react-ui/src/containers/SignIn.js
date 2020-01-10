@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import useForm from 'react-hook-form';
 import { Button, Spinner } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,18 +12,30 @@ import NavBar from "../components/NavBar";
  */
 const SignIn = () => {
 
+    // dispatch hook
     const dispatch = useDispatch();
+
+    // form hooks
     const { register, handleSubmit, errors, setError } = useForm();
     const userPayload = useSelector((state) => state.auth);
 
+    // Called on render
+    useEffect(() => {
+        // Dispatch signOut action
+        dispatch(userActions.signOut());
+    }, [dispatch]);
+
+    // Handle onSubmit form
     const onSubmit = (data, e) => {
 
-        // Dispatch action
+        // Dispatch signIn action
         dispatch(userActions.signIn(data));
 
+        // reset form
         e.target.reset();
     };
 
+    // If login fails set error
     if(userPayload.status === "error") {
         setError("signin", "failed", userPayload.message);
     }

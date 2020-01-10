@@ -9,7 +9,7 @@ import About  from './About';
 import Footer from '../components/Footer';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import Dashboard from './Dashboard';
+import Dashboard from './dashboard/Dashboard';
 import PrivateRoute from '../components/PrivateRoute';
 import { history } from '../helpers/history';
 

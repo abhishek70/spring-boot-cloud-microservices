@@ -10,3 +10,4 @@ export const SIGNIN_SERVICE_SERVER_CODE = 500;
 export const SIGNIN_REQUEST = 'SIGN_REQUEST';
 export const SIGNIN_ERROR = 'SIGNIN_ERROR';
 export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
+export const SIGNOUT = 'SIGNOUT';

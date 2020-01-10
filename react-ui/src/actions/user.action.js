@@ -1,5 +1,5 @@
 import { signInService } from '../services/signin.service';
-import { SIGNIN_REQUEST, SIGNIN_ERROR, SIGNIN_SUCCESS } from '../constants';
+import { SIGNIN_REQUEST, SIGNIN_ERROR, SIGNIN_SUCCESS, ACCESS_TOKEN, SIGNOUT } from '../constants';
 import { history } from '../helpers/history';
 
 /**
@@ -77,7 +77,10 @@ function signIn(data) {
 }
 
 function signOut() {
-
+    localStorage.removeItem(ACCESS_TOKEN);
+    return {
+        type:SIGNOUT
+    }
 }
 
 function signUp() {

@@ -1,7 +1,8 @@
-import { SIGNIN_REQUEST, SIGNIN_ERROR, SIGNIN_SUCCESS } from '../constants';
+import { SIGNIN_REQUEST, SIGNIN_ERROR, SIGNIN_SUCCESS, ACCESS_TOKEN } from '../constants';
 
 // Initial State
-const initialState = { isAuthenticating: false, loggedIn: false};
+let access_token = localStorage.getItem(ACCESS_TOKEN);
+const initialState = access_token ? { loggedIn: true} : { isAuthenticating: false, loggedIn: false};
 
 /**
  * Auth Reducer
