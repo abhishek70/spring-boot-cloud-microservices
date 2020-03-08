@@ -92,6 +92,23 @@ services:
     depends_on:
       - eureka-service
       - profile-db
+  react-ui:
+    build: react-ui
+    container_name: react-service-container
+    networks:
+      - spring-cloud-microservices
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./react-ui:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: on-failure
+    depends_on:
+      - eureka-service
+      - gateway-service
 networks:
   spring-cloud-microservices:
     external: true
